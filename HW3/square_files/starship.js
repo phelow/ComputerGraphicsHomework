@@ -4006,9 +4006,9 @@ function setRotation(){
 		0,  0,  0,  1,
 	];
 	
-	matrix = multiplyMatrix(matrix, makeXRotation(x));
-	matrix = multiplyMatrix(matrix, makeYRotation(y));
-	matrix = multiplyMatrix(matrix, makeZRotation(z));	
+	matrix = multiplyMatrix(matrix, rotateAlongX(x));
+	matrix = multiplyMatrix(matrix, rotateAlongY(y));
+	matrix = multiplyMatrix(matrix, rotateAlongZ(z));	
     var rotation = gl.getUniformLocation( program, "rotationMatrix" );
 	gl.uniformMatrix4fv(rotation, false, matrix);
 	alert(matrix);
@@ -4047,38 +4047,42 @@ multiplyMatrix = function(matrixA, matrixB) {
     return result; 
 }
 
-function makeXRotation(angleInRadians) {
-  var c = Math.cos(angleInRadians);
-  var s = Math.sin(angleInRadians);
+function rotateAlongX(angleInDegrees) {
+	var angleInRadians = angleInDegrees * 0.0174533;
+	
+  var sine = Math.sin(angleInRadians);
+  var cosine = Math.cos(angleInRadians);
 
   return [
-    1, 0, 0, 0,
-    0, c, s, 0,
-    0, -s, c, 0,
-    0, 0, 0, 1
+    1, 	0, 		0, 0,
+    0, 	cosine, sine, 0,
+    0, 	-sine, 	cosine, 0,
+    0, 	0, 		0, 1
   ];
 };
 
-function makeYRotation(angleInRadians) {
-  var c = Math.cos(angleInRadians);
-  var s = Math.sin(angleInRadians);
+function rotateAlongY(angleInDegrees) {
+	var angleInRadians = angleInDegrees * 0.0174533;
+  var sine = Math.sin(angleInRadians);
+  var cosine = Math.cos(angleInRadians);
 
   return [
-    c, 0, -s, 0,
-    0, 1, 0, 0,
-    s, 0, c, 0,
-    0, 0, 0, 1
+    cosine, 0, -sine, 0,
+    0, 		1, 0, 0,
+    sine, 	0, cosine, 0,
+    0, 		0, 0, 1
   ];
 };
 
-function makeZRotation(angleInRadians) {
-  var c = Math.cos(angleInRadians);
-  var s = Math.sin(angleInRadians);
+function rotateAlongZ(angleInDegrees) {
+	var angleInRadians = angleInDegrees * 0.0174533;
+  var sine = Math.sin(angleInRadians);
+  var cosine = Math.cos(angleInRadians);
   return [
-     c, s, 0, 0,
-    -s, c, 0, 0,
-     0, 0, 1, 0,
-     0, 0, 0, 1,
+     cosine, 	sine, 0, 0,
+    -sine, 		cosine, 0, 0,
+     0, 		0, 1, 0,
+     0, 		0, 0, 1,
   ];
 }
 
