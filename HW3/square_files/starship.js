@@ -4010,11 +4010,8 @@ function setRotation(){
 	matrix = multiplyMatrix(matrix, makeYRotation(y));
 	matrix = multiplyMatrix(matrix, makeZRotation(z));	
     var rotation = gl.getUniformLocation( program, "rotationMatrix" );
-	alert("rotation:" + rotation)
-	var ret = gl.uniformMatrix4fv(rotation, false, matrix);
-	alert("Setting rotation matrix: " + ret);
-	alert("4016");
-	
+	gl.uniformMatrix4fv(rotation, false, matrix);
+	alert(matrix);
     gl.vertexAttribPointer( rotation, 3, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( rotation );
 }
@@ -4022,7 +4019,7 @@ function setRotation(){
 function rotateAll() {
 	alert('rotateAll');
 	
-	SetRotation();
+	setRotation();
 	
     var bufferId = gl.createBuffer();
     gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
