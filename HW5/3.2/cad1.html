@@ -1,0 +1,50 @@
+
+<!-- saved from url=(0051)https://www.cs.unm.edu/~angel/WebGL/7E/03/cad1.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vColor;
+
+varying vec4 fColor;
+
+void main()
+{
+    gl_Position = vPosition;
+    fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+void main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="./cad1_files/webgl-utils.js"></script>
+<script type="text/javascript" src="./cad1_files/initShaders.js"></script>
+<script type="text/javascript" src="./cad1_files/MV.js"></script>
+<script type="text/javascript" src="./cad1_files/cad1.js"></script>
+
+</head><body>
+<div>
+<canvas id="gl-canvas" width="512" "="" height="512" oops="" ...="" your="" browser="" doesn't="" support="" the="" html5="" canvas="" element="" <="">
+</canvas></div>
+<div>
+
+<input type="range" id="rSlider" value="360">
+
+<input type="range" id="gSlider" value="360">
+
+<input type="range" id="bSlider" value="360">
+
+</div>
+
+
+
+
+
+</body></html>
